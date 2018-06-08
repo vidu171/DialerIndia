@@ -23,7 +23,7 @@ public abstract class PhoneCallReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        //We listen to two intents.  The new outgoing call only tells us of an outgoing call.  We use it to get the number.
+        //We listen to two intents.  The new outgoing AutomaticCall only tells us of an outgoing AutomaticCall.  We use it to get the number.
         Log.w("Phone Call Reciever", "On onrecieve function");
         if (intent.getAction().equals(CallRecordReceiver.ACTION_OUT)) {
             savedNumber = intent.getExtras().getString(CallRecordReceiver.EXTRA_PHONE_NUMBER);
@@ -59,8 +59,8 @@ public abstract class PhoneCallReceiver extends BroadcastReceiver {
 
     //Deals with actual events
 
-    //Incoming call-  goes from IDLE to RINGING when it rings, to OFFHOOK when it's answered, to IDLE when its hung up
-    //Outgoing call-  goes from IDLE to OFFHOOK when it dials out, to IDLE when hung up
+    //Incoming AutomaticCall-  goes from IDLE to RINGING when it rings, to OFFHOOK when it's answered, to IDLE when its hung up
+    //Outgoing AutomaticCall-  goes from IDLE to OFFHOOK when it dials out, to IDLE when hung up
     public void onCallStateChanged(Context context, int state, String number) {
         if (lastState == state) {
             //No change, debounce extras
@@ -90,7 +90,7 @@ public abstract class PhoneCallReceiver extends BroadcastReceiver {
                 }
                 break;
             case TelephonyManager.CALL_STATE_IDLE:
-                //Went to idle-  this is the end of a call.  What type depends on previous state(s)
+                //Went to idle-  this is the end of a AutomaticCall.  What type depends on previous state(s)
                 if (lastState == TelephonyManager.CALL_STATE_RINGING) {
                     //Ring but no pickup-  a miss
                     onMissedCall(context, savedNumber, callStartTime);

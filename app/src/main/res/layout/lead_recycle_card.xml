@@ -9,16 +9,20 @@
         android:paddingTop="8dp"
         android:background="@android:color/transparent"
         android:paddingBottom="8dp">
-    <ImageView
-        android:padding="@dimen/image_inner_padding"
-        android:layout_margin="6dip"
+    <TextView
+        android:layout_margin="8dp"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:text="C"
+        android:gravity="center"
+        android:textColor="@color/txt"
+        android:textSize="32sp"
         android:id="@+id/status"
         android:background="@drawable/circle_gray"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:id="@+id/Name"
         android:background="@android:color/transparent"
         android:layout_toRightOf="@id/status"

@@ -56,6 +56,7 @@ public class CallRecord {
             mCallRecordReceiver = new CallRecordReceiver(this);
         }
         mContext.registerReceiver(mCallRecordReceiver, intentFilter);
+        Log.w("CAll Record Class","Registered");
     }
 
     public void stopCallReceiver() {

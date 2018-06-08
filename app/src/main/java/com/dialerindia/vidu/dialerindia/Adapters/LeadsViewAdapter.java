@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dialerindia.vidu.dialerindia.AutomaticCall;
 import com.dialerindia.vidu.dialerindia.R;
 import com.dialerindia.vidu.dialerindia.classes.Leads;
 
@@ -44,22 +45,21 @@ public class LeadsViewAdapter  extends RecyclerView.Adapter<LeadsViewAdapter.MyV
         holder.Contact.setText(currentLead.Contact1);
         holder.City.setText(currentLead.City);
         boolean pending = currentLead.Pending;
-        boolean missed = currentLead.Pending;
+        boolean missed = currentLead.Missed;
         if(pending){
-            holder.StatusImage.setImageDrawable(myContext.getDrawable(R.drawable.ic_call_black_24dp));
+            holder.Status.setText("P");
         }
-        else if (!pending && !missed){
-
-            holder.StatusImage.setImageDrawable(myContext.getDrawable(R.drawable.ic_call_end_black_24dp));
+        else if (missed){
+            holder.Status.setText("N");
         }
         else{
-
-            holder.StatusImage.setImageDrawable(myContext.getDrawable(R.drawable.ic_call_missed_black_24dp));
+            holder.Status.setText("A");
         }
+
         holder.CallNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(myContext,"Call Now",Toast.LENGTH_LONG).show();
+                new AutomaticCall().makecallbyContact(myContext, currentLead.Contact1, currentLead.id);
             }
         });
 
@@ -80,15 +80,15 @@ public class LeadsViewAdapter  extends RecyclerView.Adapter<LeadsViewAdapter.MyV
     static class MyViewHolder extends RecyclerView.ViewHolder{
 
         RelativeLayout ParentPanel;
-        TextView Name,Contact,City;
-        ImageView StatusImage, CallNow, CallLater;
+        TextView Name,Contact,City, Status;
+        ImageView CallNow, CallLater;
         MyViewHolder(View itemView) {
             super(itemView);
             ParentPanel = itemView.findViewById(R.id.parentPanel);
             Name = itemView.findViewById(R.id.Name);
             Contact = itemView.findViewById(R.id.Contact);
             City = itemView.findViewById(R.id.City);
-            StatusImage = itemView.findViewById(R.id.status);
+            Status = itemView.findViewById(R.id.status);
             CallLater = itemView.findViewById(R.id.callLater);
             CallNow = itemView.findViewById(R.id.callNow);
         }

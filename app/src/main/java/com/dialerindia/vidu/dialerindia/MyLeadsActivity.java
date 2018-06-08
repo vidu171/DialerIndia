@@ -1,16 +1,20 @@
 package com.dialerindia.vidu.dialerindia;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.dialerindia.vidu.dialerindia.Adapters.LeadsViewAdapter;
 import com.dialerindia.vidu.dialerindia.database.LeadsDBHelper;
-
-import java.util.ArrayList;
+import com.dialerindia.vidu.dialerindia.helper.PrefsHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,10 +22,44 @@ import butterknife.OnClick;
 
 public class MyLeadsActivity extends BaseActivity {
 
+    public static final String ACTION_IN = "android.intent.action.PHONE_STATE";
+    public static final String ACTION_OUT = "android.intent.action.NEW_OUTGOING_CALL";
+    int type;
+
+
     LeadsViewAdapter mAdapter;
+
+    AutomaticCall automaticCall = new AutomaticCall();
 
     @BindView(R.id.recyclerview)
     RecyclerView myLeadsRecyclerView;
+
+    @BindView(R.id.automaticCalling)
+    Button automaticbutton;
+
+    @OnClick(R.id.automaticCalling)
+    public void AutomaticCalling() {
+            PrefsHelper.writePrefBool(this, constants.PREF_AUTOMATIC_CALLING, true);
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.putExtra(constants.INTENT_KEY_NOTIFICATION_CANCEL, true);
+            int notification_id = (int) System.currentTimeMillis();
+            PrefsHelper.writePrefInt(this, constants.PREF_NOTIFICATION_ID, notification_id);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, getString(R.string.channel_ID))
+                    .setSmallIcon(R.drawable.ic_call_white)
+                    .setContentTitle("Automatic call enabled")
+                    .setContentText("Please Tap here to disable automatic calling")
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true)
+                    .setOngoing(true);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify(notification_id, mBuilder.build());
+            automaticCall.makecall(this);
+        }
+
+
 
 
     @Override
@@ -30,13 +68,44 @@ public class MyLeadsActivity extends BaseActivity {
         setContentView(R.layout.my_leads_activity);
         ButterKnife.bind(this);
 
-        mAdapter = new LeadsViewAdapter(this, new LeadsDBHelper(this).getAllLeadsFromSQL());
-        final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        myLeadsRecyclerView.setLayoutManager(mLayoutManager);
-        myLeadsRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        myLeadsRecyclerView.setAdapter(mAdapter);
+        setBackground(this);
+        initiateAdapter();
+        checkPending();
+
+    }
+
+    private void checkPending() {
+        LeadsDBHelper dbHelper = new LeadsDBHelper(this);
+        if (!dbHelper.checkPending()) {
+            automaticbutton.setText("No Pending calls Add lead");
+            automaticbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MyLeadsActivity.this, AddLeadsActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+    }
 
 
+    public void initiateAdapter() {
+            type = getIntent().getIntExtra(constants.INTENT_KEY_TYPE,1);
+            mAdapter = new LeadsViewAdapter(this, new LeadsDBHelper(this).getLeadsFromSQL(type));
+            final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+            myLeadsRecyclerView.setLayoutManager(mLayoutManager);
+            myLeadsRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            myLeadsRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
 }

@@ -1,45 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="-"
-        android:layout_marginTop="10dip"
-        android:text="Add a new lead"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032" />
-
-    <ScrollView
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dip">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginRight="20dip"
-        android:layout_marginLeft="20dip">
-
-        <LinearLayout
+        tools:context=".MainActivity">
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dip"
-            android:weightSum="4">
-            <TextView
+            android:layout_height="0dip"
+            android:layout_weight="0.1">
+
+            <ImageView
+                android:alpha="0.03"
+                android:id="@+id/background"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="-"
+                android:layout_marginTop="10dip"
+                android:text="Add a new lead"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/black" />
+
+                <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="56dip">
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dip"
+                android:layout_marginLeft="20dip">
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dip"
+                android:weightSum="4">
+                <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -47,7 +62,7 @@
                 android:gravity="center"
                 android:textColor="@color/txt_dark"
                 android:background="@drawable/box"/>
-            <EditText
+                <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="6dip"
@@ -55,15 +70,15 @@
                 android:textColor="@color/txt"
                 android:id="@+id/eName"
                 android:background="@drawable/box"/>
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:weightSum="4">
-            <TextView
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:weightSum="4">
+                <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -71,7 +86,7 @@
                 android:gravity="center"
                 android:textColor="@color/txt_dark"
                 android:background="@drawable/box"/>
-            <EditText
+                <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:padding="6dip"
@@ -79,15 +94,15 @@
                 android:layout_weight="3"
                 android:id="@+id/eContact1"
                 android:background="@drawable/box"/>
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:weightSum="4">
-            <TextView
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:weightSum="4">
+                <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -95,7 +110,7 @@
                 android:gravity="center"
                 android:textColor="@color/txt_dark"
                 android:background="@drawable/box"/>
-            <EditText
+                <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="6dip"
@@ -103,15 +118,15 @@
                 android:textColor="@color/txt"
                 android:layout_weight="3"
                 android:background="@drawable/box"/>
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:weightSum="4">
-            <TextView
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:weightSum="4">
+                <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -119,7 +134,7 @@
                 android:gravity="center"
                 android:textColor="@color/txt_dark"
                 android:background="@drawable/box"/>
-            <EditText
+                <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="6dip"
@@ -127,15 +142,15 @@
                 android:layout_weight="3"
                 android:id="@+id/eEmail"
                 android:background="@drawable/box"/>
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:weightSum="4">
-            <TextView
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:weightSum="4">
+                <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -143,7 +158,7 @@
                 android:gravity="center"
                 android:textColor="@color/txt_dark"
                 android:background="@drawable/box"/>
-            <EditText
+                <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="6dip"
@@ -154,15 +169,15 @@
                 android:lines="3"
                 android:textColor="@color/txt"
                 android:background="@drawable/box"/>
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:weightSum="4">
-            <TextView
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:weightSum="4">
+                <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -173,7 +188,7 @@
                 android:paddingLeft="8dip"
                 android:textColor="@color/txt_dark"
                 android:background="@drawable/box"/>
-            <EditText
+                <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="6dip"
@@ -181,14 +196,14 @@
                 android:layout_weight="3"
                 android:id="@+id/eCity"
                 android:background="@drawable/box"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:weightSum="4">
-            <TextView
+                </LinearLayout>
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:weightSum="4">
+                <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -199,7 +214,7 @@
                 android:paddingLeft="8dip"
                 android:textColor="@color/txt_dark"
                 android:background="@drawable/box"/>
-            <EditText
+                <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="6dip"
@@ -207,12 +222,12 @@
                 android:layout_weight="3"
                 android:id="@+id/eGroup"
                 android:background="@drawable/box"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
+                </LinearLayout>
+                <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Lead"
@@ -220,9 +235,13 @@
                 android:textColor="@color/txt_dark"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/box_blue"/>
-        </LinearLayout>
+                </LinearLayout>
+                </LinearLayout>
+
+                </ScrollView>
+
+            </RelativeLayout>
+        </FrameLayout>
     </LinearLayout>
+</android.support.constraint.ConstraintLayout>
 
-    </ScrollView>
-
-</RelativeLayout>
