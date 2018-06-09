@@ -1,19 +1,11 @@
 package com.dialerindia.vidu.dialerindia;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.media.MediaRecorder;
 import android.net.Uri;
-import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
-import com.dialerindia.vidu.dialerindia.callrecord.CallRecord;
-import com.dialerindia.vidu.dialerindia.callrecord.receiver.CallRecordReceiver;
 import com.dialerindia.vidu.dialerindia.classes.Leads;
 import com.dialerindia.vidu.dialerindia.database.LeadsDBHelper;
 import com.dialerindia.vidu.dialerindia.helper.PrefsHelper;
@@ -29,7 +21,7 @@ public class AutomaticCall {
 
         if (firstUncalledLead != null) {
             PrefsHelper.writePrefString(myContext,constants.PREF_LAST_NUMBER,firstUncalledLead.Contact1);
-            PrefsHelper.writePrefInt(myContext,constants.PREF_NUMBER_ID,firstUncalledLead.id);
+            PrefsHelper.writePrefInt(myContext,constants.PREF_LEAD_ID,firstUncalledLead.id);
             Log.w("CAll Made to","" + firstUncalledLead.id);
             String Number = firstUncalledLead.Contact1;
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + Number));
@@ -43,7 +35,7 @@ public class AutomaticCall {
         Log.w("Service","called");
         if (Contact != null) {
             PrefsHelper.writePrefString(myContext,"LatestNumber",Contact.trim());
-            PrefsHelper.writePrefInt(myContext,constants.PREF_NUMBER_ID,id);
+            PrefsHelper.writePrefInt(myContext,constants.PREF_LEAD_ID,id);
             Log.w("CAll Made to","" + id);
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + Contact));
             myContext.startActivity(intent);

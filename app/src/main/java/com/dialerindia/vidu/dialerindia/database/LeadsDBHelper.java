@@ -27,6 +27,7 @@ public class LeadsDBHelper extends SQLiteOpenHelper {
     private static final String COLOUMN_GROUP = "_group";
     private static final String COLOUMN_PENDING = "pending";
     private static final String COLOUMN_MISSED = "missed";
+    private static final String COLOUMN_SCHEDULED_TIME = "scheduledtime";
 
     Constants constants= new Constants();
 
@@ -38,7 +39,8 @@ public class LeadsDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+COLOUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+ COLOUMN_NAME+
                 " TEXT,"+COLOUMN_CONTACT1+" TEXT,"+COLOUMN_CONTACT2+" TEXT,"+COLOUMN_EMAIL+ " TEXT,"+COLOUMN_ADDRESS+" TEXT,"+COLOUMN_CITY+" TEXT," +
-                COLOUMN_GROUP + " TEXT," +COLOUMN_PENDING + " INTEGER, " + COLOUMN_MISSED +"  INTEGER"+")";
+                COLOUMN_GROUP + " TEXT," +COLOUMN_PENDING + " INTEGER, " + COLOUMN_MISSED +"  INTEGER, " + COLOUMN_SCHEDULED_TIME +" INTEGER "+ ")";
+        Log.w("Database Created",CREATE_TABLE);
         db.execSQL(CREATE_TABLE);
     }
 
@@ -59,6 +61,7 @@ public class LeadsDBHelper extends SQLiteOpenHelper {
         values.put(COLOUMN_GROUP, Data.Group.trim());
         values.put(COLOUMN_PENDING, 1);
         values.put(COLOUMN_MISSED, 0);
+        values.put(COLOUMN_SCHEDULED_TIME, 0);
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
@@ -107,6 +110,13 @@ public class LeadsDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void setCallbackTIme( int id , long time){
+        String select_query = "UPDATE "+TABLE_NAME +" SET "+COLOUMN_SCHEDULED_TIME+" = " +time +" WHERE "+COLOUMN_ID+" = "+ id;
+        SQLiteDatabase db  = this.getReadableDatabase();
+        db.execSQL(select_query);
+        db.close();
+    }
+
     public ArrayList<Leads> getLeadsFromSQL(int type) {
         ArrayList<Leads> myLeadsList = new ArrayList<>();
         String select_query = "SELECT *FROM "+TABLE_NAME;
@@ -145,6 +155,40 @@ public class LeadsDBHelper extends SQLiteOpenHelper {
         db.close();
         return myLeadsList;
     }
+
+    public ArrayList<Leads> getScheduledLeadsFromSQL() {
+        ArrayList<Leads> myLeadsList = new ArrayList<>();
+        String select_query = "SELECT *FROM "+TABLE_NAME;
+        SQLiteDatabase db  = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(select_query, null);
+        if(cursor.moveToFirst()){
+            do {
+                if(cursor.getLong(cursor.getColumnIndex(COLOUMN_SCHEDULED_TIME))>0) {
+                    String name = cursor.getString(cursor.getColumnIndex(COLOUMN_NAME));
+                    String Contact1 = cursor.getString(cursor.getColumnIndex(COLOUMN_CONTACT1));
+                    String Contact2 = cursor.getString(cursor.getColumnIndex(COLOUMN_CONTACT2));
+                    String Email = cursor.getString(cursor.getColumnIndex(COLOUMN_EMAIL));
+                    String Address = cursor.getString(cursor.getColumnIndex(COLOUMN_ADDRESS));
+                    String City = cursor.getString(cursor.getColumnIndex(COLOUMN_CITY));
+                    String Group = cursor.getString(cursor.getColumnIndex(COLOUMN_GROUP));
+                    Leads createLead = new Leads(name, Contact1, Contact2, Email, Address, City, Group);
+                    createLead.setPending(cursor.getInt(cursor.getColumnIndex(COLOUMN_PENDING)) == 1);
+                    createLead.setMissed(cursor.getInt(cursor.getColumnIndex(COLOUMN_MISSED)) == 1);
+                    createLead.id = cursor.getInt(cursor.getColumnIndex(COLOUMN_ID));
+                    createLead.CallbackTime = cursor.getLong(cursor.getColumnIndex(COLOUMN_SCHEDULED_TIME));
+                    myLeadsList.add(createLead);
+                }
+
+            }
+            while (cursor.moveToNext());
+        }
+
+        db.close();
+        return myLeadsList;
+    }
+
+
+
 
     public boolean checkPending(){
         Leads firstUncalledcLead = null;

@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -73,8 +74,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/AddLeads"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_text_format_black_24dp"/>
@@ -92,8 +93,8 @@
                             android:orientation="vertical"
                             android:layout_height="match_parent">
                             <ImageButton
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/MyLeads"
                                 android:background="@drawable/circle_blue"
                                 android:src="@drawable/ic_account_box_black_24dp"/>
@@ -112,8 +113,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/FollowUp"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_add_alarm_black_24dp"/>
@@ -139,8 +140,8 @@
                             android:layout_width="0dip"
                             android:layout_height="match_parent">
                             <ImageView
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/answered"
                                 android:padding="@dimen/image_inner_padding"
                                 android:background="@drawable/circle_gray"
@@ -160,8 +161,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/notAnswered"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_call_missed_black_24dp"/>
@@ -180,8 +181,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/Pending"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_call_end_black_24dp"/>
@@ -208,8 +209,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/profile"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_sentiment_satisfied_black_24dp"/>
@@ -228,8 +229,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/Notifications"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_event_note_black_24dp"/>
@@ -248,8 +249,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/settings"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_settings_black_24dp"/>
@@ -276,8 +277,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:id="@+id/termsAndConnection"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_error_black_24dp"/>
@@ -296,8 +297,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_text_format_black_24dp"/>
                             <TextView
@@ -315,8 +316,8 @@
                             android:layout_height="match_parent">
                             <ImageView
                                 android:padding="@dimen/image_inner_padding"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
 
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_text_format_black_24dp"/>

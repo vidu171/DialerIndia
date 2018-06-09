@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="100dip"
+    android:id="@+id/parentPanel">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:background="@android:color/transparent"
+        android:paddingBottom="8dp">
+    <TextView
+        android:layout_margin="8dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:text="C"
+        android:gravity="center"
+        android:textColor="@color/txt"
+        android:textSize="32sp"
+        android:id="@+id/status"
+        android:background="@drawable/circle_gray"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/Name"
+        android:background="@android:color/transparent"
+        android:layout_toRightOf="@id/status"
+        android:layout_marginLeft="6dip"
+        android:layout_marginTop="6dip"
+        android:textColor="@color/txt"
+        android:text="Leads Name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:background="@android:color/transparent"
+        android:id="@+id/Contact"
+        android:textColor="@color/txt"
+        android:layout_toRightOf="@id/status"
+        android:layout_marginLeft="6dip"
+        android:layout_marginTop="6dip"
+        android:layout_below="@id/Name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:background="@android:color/transparent"
+        android:id="@+id/time_txt"
+        android:textColor="@color/txt"
+        android:layout_toRightOf="@id/status"
+        android:layout_marginLeft="6dip"
+        android:layout_marginTop="6dip"
+        android:layout_below="@id/Contact"/>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dip"
+        android:layout_centerVertical="true"
+        android:id="@+id/callLater"
+        android:padding="8dp"
+        android:src="@drawable/ic_add_alarm_white"
+        android:background="@drawable/circle_green"/>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_call_white"
+        android:layout_toLeftOf="@id/callLater"
+        android:layout_centerVertical="true"
+        android:layout_margin="8dip"
+        android:padding="8dp"
+        android:id="@+id/callNow"
+        android:background="@drawable/circle_blue"/>
+    </RelativeLayout>
+
+</RelativeLayout>

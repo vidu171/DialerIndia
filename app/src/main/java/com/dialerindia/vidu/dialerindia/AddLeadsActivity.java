@@ -60,7 +60,7 @@ public class AddLeadsActivity extends BaseActivity {
         setContentView(R.layout.activity_add_leads);
         ButterKnife.bind(this);
 
-        setBackground(this);
+//        setBackground(this);
     }
 
 

@@ -11,6 +11,7 @@ public class Leads {
     public String Group;
     public boolean Pending = true;
     public boolean Missed = false;
+    public long CallbackTime;
 
     public Leads(String Name, String Contact1, String Contact2, String Email, String Address, String City, String Group){
         this.Name = Name;
@@ -30,4 +31,5 @@ public class Leads {
         Missed = missed;
     }
 
+    public void setCallbackTime(long time){CallbackTime = time;}
 }

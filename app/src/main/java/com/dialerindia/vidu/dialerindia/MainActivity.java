@@ -36,8 +36,8 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.FollowUp)
     public void FollowUp(){
-        Intent I = new Intent(MainActivity.this, MyLeadsActivity.class);
-//        startActivity(I);
+        Intent I = new Intent(MainActivity.this, ScheduledLeadsActivity.class);
+        startActivity(I);
     }
 
 
@@ -85,19 +85,16 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.termsAndConnection)
     public void termsAndCondition(){
-        Intent I = new Intent(MainActivity.this, AddLeadsActivity.class);
+//        Intent I = new Intent(MainActivity.this, datepickactivity.class);
 //        startActivity(I);
     }
-
-    @BindView(R.id.background)
-    ImageView background;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         isCallPermission();
         createNotificationChannel();
         setBackground(this);
