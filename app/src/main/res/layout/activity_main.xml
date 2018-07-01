@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".Activities.MainActivity">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dip"
@@ -269,6 +269,27 @@
                         android:weightSum="3"
                         android:layout_weight="1"
                         android:layout_height="0dip">
+
+                        <LinearLayout
+                            android:visibility="invisible"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:padding="@dimen/image_inner_padding"
+                                android:layout_width="@dimen/circular_image_width"
+                                android:layout_height="@dimen/circular_image_height"
+                                android:background="@drawable/circle_gray"
+                                android:src="@drawable/ic_text_format_black_24dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add Leads"
+                                android:textColor="@color/txt"/>
+                        </LinearLayout>
+
                         <LinearLayout
                             android:gravity="center"
                             android:layout_weight="1"
@@ -299,32 +320,13 @@
                                 android:padding="@dimen/image_inner_padding"
                                 android:layout_width="@dimen/circular_image_width"
                                 android:layout_height="@dimen/circular_image_height"
+                                android:id="@+id/Login_Test"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_text_format_black_24dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Add Leads"
-                                android:textColor="@color/txt"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent">
-                            <ImageView
-                                android:padding="@dimen/image_inner_padding"
-                                android:layout_width="@dimen/circular_image_width"
-                                android:layout_height="@dimen/circular_image_height"
-
-                                android:background="@drawable/circle_gray"
-                                android:src="@drawable/ic_text_format_black_24dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Add Leads"
+                                android:text="Login Test"
                                 android:textColor="@color/txt"/>
                         </LinearLayout>
                     </LinearLayout>

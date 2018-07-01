@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".Activities.MainActivity">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dip"
@@ -65,7 +65,10 @@
                 <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_weight="3"
                 android:textColor="@color/txt"
                 android:id="@+id/eName"
@@ -89,7 +92,10 @@
                 <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:padding="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textColor="@color/txt"
                 android:layout_weight="3"
                 android:id="@+id/eContact1"
@@ -113,7 +119,10 @@
                 <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:id="@+id/eContact2"
                 android:textColor="@color/txt"
                 android:layout_weight="3"
@@ -137,7 +146,10 @@
                 <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textColor="@color/txt"
                 android:layout_weight="3"
                 android:id="@+id/eEmail"
@@ -161,7 +173,10 @@
                 <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_weight="3"
                 android:inputType="textMultiLine"
                 android:maxLines="5"
@@ -180,7 +195,7 @@
                 <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="City"
                 android:gravity="center"
                 android:paddingTop="11dip"
@@ -191,7 +206,10 @@
                 <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textColor="@color/txt"
                 android:layout_weight="3"
                 android:id="@+id/eCity"
@@ -206,7 +224,7 @@
                 <TextView
                 android:layout_weight="1"
                 android:layout_width="0dip"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Group"
                 android:gravity="center"
                 android:paddingTop="11dip"
@@ -217,7 +235,10 @@
                 <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="6dip"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textColor="@color/txt"
                 android:layout_weight="3"
                 android:id="@+id/eGroup"

@@ -4,10 +4,12 @@
     package="com.dialerindia.vidu.dialerindia">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--<uses-permission android:name="android.permission.RECORD_AUDIO" />-->
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
 
     <application
@@ -17,24 +19,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddLeadsActivity" android:noHistory="true"/>
-        <activity android:name=".MyLeadsActivity"/>
-        <activity android:name=".Dispositions"/>
-        <activity android:name=".ScheduledLeadsActivity"/>
-
+        <activity android:name=".Activities.AddLeadsActivity" android:noHistory="true"  android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".Activities.LoginActivity" android:noHistory="true" android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".Activities.MyLeadsActivity"/>
+        <activity android:name=".Activities.Dispositions"/>
+        <activity android:name=".Activities.ScheduledLeadsActivity"/>
+        <activity android:name=".Activities.ProfileActivity"/>
+        <activity android:name=".Activities.NotificationActivity"/>
+        <activity android:name=".Activities.TermsAndConditionActivity"/>
+        <activity android:name=".Activities.SettingsActivity"/>
         <receiver android:name=".reciever.CallReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".reciever.OnBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".reciever.ScheduledNotification">
+            <intent-filter>
+                <action android:name="com.dialerIndia.notifaction_recieved"/>
             </intent-filter>
         </receiver>
 

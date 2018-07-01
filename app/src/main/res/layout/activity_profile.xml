@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.MainActivity">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.1">
+            <ImageView
+                android:alpha="0.03"
+                android:id="@+id/background"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="-"
+                    android:layout_marginTop="10dp"
+                    android:text="Profile View"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@android:color/black" />
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp">
+                    <LinearLayout
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="48dp"
+                            android:background="@drawable/account_chip_bg"
+                            android:orientation="horizontal"
+                            android:padding="8dp" >
+                            <ImageView
+                                android:id="@+id/account_picture"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:adjustViewBounds="false"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/avyukta" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="20dp"
+                                android:orientation="vertical" >
+
+                                <TextView
+                                    android:id="@+id/account_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/txt_dark"
+                                    android:text="Vidhyanshu Jain"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/account_group"
+                                    android:text="Manipal University"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/txt_dark" />
+                                <TextView
+                                    android:id="@+id/account_email"
+                                    android:text="viduuj@gmail.com"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/txt_dark" />
+                                <TextView
+                                    android:id="@+id/account_phonenumber"
+                                    android:text="+91-7869530027"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/txt_dark" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="24dp"
+                            android:layout_marginTop="24dp"
+                            android:gravity="center_horizontal"
+                            android:text="Welcome"
+                            android:textColor="@color/txt_dark"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <Button
+                            android:id="@+id/sign_out"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:background="@drawable/button_bg"
+                            android:text="Sign Out"
+                            android:textColor="@android:color/white" />
+
+                    </LinearLayout>
+                </ScrollView>
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

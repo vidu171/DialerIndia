@@ -1,4 +1,4 @@
-package com.dialerindia.vidu.dialerindia.database;
+package com.dialerindia.vidu.dialerindia.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.dialerindia.vidu.dialerindia.Constants;
+import com.dialerindia.vidu.dialerindia.Constants.Constants;
 import com.dialerindia.vidu.dialerindia.classes.Leads;
 
 import java.util.ArrayList;
@@ -67,6 +67,36 @@ public class LeadsDBHelper extends SQLiteOpenHelper {
     }
 
 
+    public Leads getLeadByID(int Id){
+        Leads LeadbyId = null;
+        String select_query = "SELECT *FROM "+TABLE_NAME;
+        SQLiteDatabase db  = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(select_query, null);
+        if(cursor.moveToFirst()){
+            do {
+                Log.w("Datbase", cursor.getInt(cursor.getColumnIndex(COLOUMN_PENDING))+"");
+                if(cursor.getInt(cursor.getColumnIndex(COLOUMN_ID))==Id){
+
+                    String name = cursor.getString(cursor.getColumnIndex(COLOUMN_NAME));
+                    String Contact1 = cursor.getString(cursor.getColumnIndex(COLOUMN_CONTACT1));
+                    String Contact2 = cursor.getString(cursor.getColumnIndex(COLOUMN_CONTACT2));
+                    String Email = cursor.getString(cursor.getColumnIndex(COLOUMN_EMAIL));
+                    String Address = cursor.getString(cursor.getColumnIndex(COLOUMN_ADDRESS));
+                    String City = cursor.getString(cursor.getColumnIndex(COLOUMN_CITY));
+                    String Group = cursor.getString(cursor.getColumnIndex(COLOUMN_GROUP));
+                    LeadbyId = new Leads(name,Contact1,Contact2,Email,Address,City,Group);
+                    LeadbyId.id = cursor.getInt(cursor.getColumnIndex(COLOUMN_ID));
+                    LeadbyId.CallbackTime = cursor.getLong(cursor.getColumnIndex(COLOUMN_SCHEDULED_TIME));
+                    db.close();
+                    return  LeadbyId;
+                }
+
+            }
+            while (cursor.moveToNext());
+        }
+        db.close();
+        return null;
+    }
 
     public Leads getFirstUncalledLead(){
         Leads firstUncalledcLead = null;
@@ -87,12 +117,14 @@ public class LeadsDBHelper extends SQLiteOpenHelper {
                     String Group = cursor.getString(cursor.getColumnIndex(COLOUMN_GROUP));
                     firstUncalledcLead = new Leads(name,Contact1,Contact2,Email,Address,City,Group);
                     firstUncalledcLead.id = cursor.getInt(cursor.getColumnIndex(COLOUMN_ID));
+                    db.close();
                     return  firstUncalledcLead;
                 }
 
             }
             while (cursor.moveToNext());
         }
+        db.close();
         return null;
     }
 

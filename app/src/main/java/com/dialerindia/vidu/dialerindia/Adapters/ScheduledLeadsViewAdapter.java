@@ -2,7 +2,6 @@ package com.dialerindia.vidu.dialerindia.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dialerindia.vidu.dialerindia.AutomaticCall;
+import com.dialerindia.vidu.dialerindia.Activities.AutomaticCall;
 import com.dialerindia.vidu.dialerindia.R;
 import com.dialerindia.vidu.dialerindia.classes.Leads;
 

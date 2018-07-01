@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.MainActivity">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.1">
+
+            <ImageView
+                android:alpha="0.03"
+                android:id="@+id/background"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="-"
+                            android:layout_marginTop="10dip"
+                            android:text="Dispositions"
+                            android:textStyle="bold"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@android:color/black" />
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="56dip"
+                            android:layout_marginBottom="50dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="Logout"
+                                        android:textStyle="bold"
+                                        android:padding="8dp"
+                                        android:background="@color/materialBlue"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="30dp"
+                                    android:weightSum="4">
+                                    <LinearLayout
+                                        android:layout_weight="3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:textSize="16sp"
+                                        android:layout_height="match_parent"
+                                        android:text="Logout from this app"
+                                        android:gravity="center"
+                                        android:textColor="@color/txt_dark"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/box_blue"
+                                        android:id="@+id/logout"
+                                        android:theme="@style/Theme.AppCompat.Light">
+                                        <TextView
+                                            android:paddingLeft="10dp"
+                                            android:paddingRight="10dp"
+                                            android:paddingBottom="4dp"
+                                            android:paddingTop="4dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Log Out"
+                                            />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="Recording Settings"
+                                        android:textStyle="bold"
+                                        android:padding="8dp"
+                                        android:background="@color/materialOrrange"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="30dp"
+                                    android:weightSum="4">
+                                    <LinearLayout
+                                        android:layout_weight="2.3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:textSize="16sp"
+                                            android:layout_height="match_parent"
+                                            android:text="Storage Format"
+                                            android:gravity="center"
+                                            android:textColor="@color/txt_dark"/>
+                                    </LinearLayout>
+                                    <Spinner
+                                        android:id="@+id/spinnerrecordingFormat"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1.6"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_height="match_parent"
+                                        android:theme="@style/Theme.AppCompat.Light"
+                                        />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="30dp"
+                                    android:weightSum="4">
+                                    <LinearLayout
+                                        android:layout_weight="2.3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:textSize="16sp"
+                                            android:layout_height="match_parent"
+                                            android:text="Storage Limit"
+                                            android:gravity="center"
+                                            android:textColor="@color/txt_dark"/>
+                                    </LinearLayout>
+                                    <EditText
+                                        android:id="@+id/storageLimit"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1.6"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_height="match_parent"
+                                        android:theme="@style/Theme.AppCompat.Light"
+                                        />
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="Callback Settings"
+                                        android:textStyle="bold"
+                                        android:padding="8dp"
+                                        android:background="@color/mdtp_red"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="30dp"
+                                    android:weightSum="4">
+                                    <LinearLayout
+                                        android:layout_margin="10dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal"
+                                        android:layout_marginBottom="30dp"
+                                        android:weightSum="4">
+                                        <LinearLayout
+                                            android:layout_weight="2.3"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:textSize="16sp"
+                                                android:layout_height="match_parent"
+                                                android:text="Callback Frequency"
+                                                android:gravity="center"
+                                                android:textColor="@color/txt_dark"/>
+                                        </LinearLayout>
+                                        <Spinner
+                                            android:id="@+id/spinnercallbackfrequency"
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1.6"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_height="match_parent"
+                                            android:theme="@style/Theme.AppCompat.Light"
+                                            />
+                                </LinearLayout>
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </ScrollView>
+                    </RelativeLayout>
+                </ScrollView>
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

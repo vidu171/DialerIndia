@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.MainActivity">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.1">
+            <ImageView
+                android:alpha="0.03"
+                android:id="@+id/background"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="-"
+                    android:layout_marginTop="10dp"
+                    android:text="Notification"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@android:color/black" />
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="40dp">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <android.support.v7.widget.CardView
+                            android:layout_margin="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="8dp"
+                            app:cardBackgroundColor="@color/materialBlue2">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Please Call +91 7869530027"/>
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="8dp"
+                            android:layout_margin="8dp"
+                            app:cardBackgroundColor="@color/materialGreen">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="35 new leads have been added please make sure you call them on time"/>
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="8dp"
+                            android:layout_margin="8dp"
+                            app:cardBackgroundColor="@color/mdtp_red">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="35 new leads have been added please make sure you call them on time"/>
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+
+                    </LinearLayout>
+                </ScrollView>
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
