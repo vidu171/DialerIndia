@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.dialerindia.vidu.dialerindia.Constants.Constants;
 import com.dialerindia.vidu.dialerindia.helper.PrefsHelper;
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 
 import org.json.JSONObject;
@@ -30,7 +31,7 @@ public class FetchLeadsDAO {
     }
 
 
-    public Future<Boolean> FetchData(final String user) {
+    public ListenableFuture<Boolean> FetchData(final String user) {
         URL+="&VD_login="+user;
         final SettableFuture<Boolean> LoginFuture = SettableFuture.create();
         AsyncTask.execute(new Runnable() {
@@ -48,7 +49,7 @@ public class FetchLeadsDAO {
                             .followRedirects(false)
                             .execute();
                     Log.w("DAO Fetch", response.body());
-
+                    LoginFuture.set(true);
                 }
                 catch (Exception e){
                     e.printStackTrace();

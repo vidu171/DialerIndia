@@ -1,28 +1,26 @@
- package com.dialerindia.vidu.dialerindia.Activities;
+package com.dialerindia.vidu.dialerindia.Activities;
 
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
 
 import com.dialerindia.vidu.dialerindia.DAO.FetchLeadsDAO;
 import com.dialerindia.vidu.dialerindia.Fragments.MainPage;
 import com.dialerindia.vidu.dialerindia.R;
 import com.dialerindia.vidu.dialerindia.helper.PrefsHelper;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-
-import java.util.concurrent.Future;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,53 +29,55 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity {
 
 
-
     MainPage fragmentMainPage;
-
 
 
     @BindView(R.id.sliding_layout)
     SlidingUpPanelLayout sothreeLayout;
 
     @OnClick(R.id.myLeads)
-    void myLeads(){
-        showLoadingDialog(MainActivity.this, "Updating Leads");
+    void myLeads() {
+        showLoadingDialogOnUIThread(MainActivity.this, "Updating Leads");
         fetchLeads();
     }
 
 
-
     @OnClick(R.id.follow_up)
-    void follow_up(){
+    void follow_up() {
         Intent I = new Intent(MainActivity.this, ScheduledLeadsActivity.class);
         startActivity(I);
     }
+
     @OnClick(R.id.Pending)
-    void pending(){
+    void pending() {
         Intent I = new Intent(MainActivity.this, MyLeadsActivity.class);
         I.putExtra(constants.INTENT_KEY_TYPE, constants.LEADS_PENDING);
         startActivity(I);
 
     }
+
     @OnClick(R.id.answered)
-    void answered(){
+    void answered() {
         Intent I = new Intent(MainActivity.this, MyLeadsActivity.class);
         I.putExtra(constants.INTENT_KEY_TYPE, constants.LEADS_ANSWERED);
         startActivity(I);
     }
+
     @OnClick(R.id.notAnswered)
-    void not_answered(){
+    void not_answered() {
         Intent I = new Intent(MainActivity.this, MyLeadsActivity.class);
         I.putExtra(constants.INTENT_KEY_TYPE, constants.LEADS_NOT_ANSWERED);
         startActivity(I);
     }
+
     @OnClick(R.id.settings)
-    void settings(){
+    void settings() {
         Intent I = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(I);
     }
+
     @OnClick(R.id.terms_and_condition_textview)
-    void terms(){
+    void terms() {
         Intent I = new Intent(MainActivity.this, TermsAndConditionActivity.class);
         startActivity(I);
     }
@@ -87,11 +87,10 @@ public class MainActivity extends BaseActivity {
     LinearLayout progressBarLayout;
 
 
-
     @OnClick(R.id.hamburger)
-    public void slideUpToggle() {sothreeLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED); }
-
-
+    public void slideUpToggle() {
+        sothreeLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+    }
 
 
     @Override
@@ -112,15 +111,12 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
     public void replaceFrag() {
         fragmentMainPage = new MainPage();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.fadein, R.anim.fadeout).replace(R.id.mainFragment, fragmentMainPage, "Dashboard");
         ft.commit();
     }
-
-
 
 
     @Override
@@ -138,10 +134,10 @@ public class MainActivity extends BaseActivity {
     }
 
     private void checkNoitificationCAncelled() {
-        if(getIntent().getBooleanExtra(constants.INTENT_KEY_NOTIFICATION_CANCEL,false)){
+        if (getIntent().getBooleanExtra(constants.INTENT_KEY_NOTIFICATION_CANCEL, false)) {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            notificationManager.cancel(PrefsHelper.readPrefInt(this,constants.PREF_NOTIFICATION_ID));
-            PrefsHelper.writePrefBool(this,constants.PREF_AUTOMATIC_CALLING,false);
+            notificationManager.cancel(PrefsHelper.readPrefInt(this, constants.PREF_NOTIFICATION_ID));
+            PrefsHelper.writePrefBool(this, constants.PREF_AUTOMATIC_CALLING, false);
         }
     }
 
@@ -170,32 +166,27 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    public void fetchLeads(){
+    public void fetchLeads() {
         String user = PrefsHelper.readPrefString(this, constants.PREF_USER_NAME);
-        Future<Boolean> FetchLeads = FetchLeadsDAO
+        ListenableFuture<Boolean> FetchLeads = FetchLeadsDAO
                 .getInstance()
                 .FetchData(user);
-        while (!FetchLeads.isDone()){
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        Futures.addCallback(FetchLeads, new FutureCallback<Boolean>() {
+            @Override
+            public void onSuccess(@Nullable Boolean result) {
+                hideLoadingDialog();
             }
-        }
-        try {            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-
-//        hideLoadingDialog();
+            @Override
+            public void onFailure(Throwable t) {
+                hideLoadingDialog();
+            }
+        });
 //        Intent I = new Intent(MainActivity.this, MyLeadsActivity.class);
 //        I.putExtra(constants.INTENT_KEY_TYPE, constants.LEADS_ALL);
 //        startActivity(I);
 
     }
-
-
 
 
 }
