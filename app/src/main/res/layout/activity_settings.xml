@@ -180,8 +180,7 @@
                                         android:layout_height="match_parent"
                                         android:text="Callback Settings"
                                         android:textStyle="bold"
-                                        android:padding="8dp"
-                                        android:background="@color/mdtp_red"/>
+                                        android:padding="8dp"/>
                                 </LinearLayout>
 
                                 <LinearLayout

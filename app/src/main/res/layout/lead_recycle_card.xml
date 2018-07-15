@@ -62,12 +62,12 @@
         android:layout_centerVertical="true"
         android:id="@+id/callLater"
         android:padding="8dp"
-        android:src="@drawable/ic_watch_later_white_24dp"
+        android:src="@drawable/ic_add_alarm_white"
         android:background="@drawable/circle_green"/>
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/ic_call_white"
+        android:src="@drawable/ic_call"
         android:layout_toLeftOf="@id/callLater"
         android:layout_centerVertical="true"
         android:layout_margin="8dip"

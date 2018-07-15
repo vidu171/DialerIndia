@@ -5,7 +5,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
 android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/background"
+    android:background="@color/white"
     android:orientation="vertical"
     android:animateLayoutChanges="true"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,137 +16,142 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="0.1">
-
-        <ImageView
-            android:alpha="0.03"
-            android:id="@+id/background"
-            android:scaleType="centerCrop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-
+        <!--<ImageView-->
+            <!--android:alpha="0.03"-->
+            <!--android:id="@+id/background"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"/>-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
+            <ScrollView
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:scrollbarFadeDuration="1000"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical">
 
-                <ScrollView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="100dip"
-                    android:paddingBottom="14dip"
-                    android:scrollbarFadeDuration="1000"
-                    android:scrollbarStyle="outsideOverlay"
-                    android:scrollbars="vertical">
+                    android:animateLayoutChanges="true"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
 
-                    <LinearLayout
+                    <ImageView
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/avyukta"
+                        android:layout_marginBottom="50dp" />
+
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:text="Dialer India"-->
+                    <!--android:focusable="true"-->
+                    <!--android:textColor="@color/txt_dark"-->
+                    <!--android:textSize="20sp"-->
+                    <!--android:layout_marginBottom="30dp"/>-->
+                    <EditText
+                        android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:animateLayoutChanges="true"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#90fafafa"
+                        android:drawablePadding="25dp"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:hint="Username"
+                        android:paddingBottom="15dp"
+                        android:paddingEnd="24dip"
+                        android:paddingStart="34dip"
+                        android:paddingTop="15dp"
+                        android:textColor="@color/txt_dark"
+                        android:textColorHint="@color/txt"
+                        android:textSize="20sp" />
 
 
-                        <ImageView
-
-                            android:layout_width="100dip"
-                            android:layout_height="80dip"
-                            android:layout_gravity="center_horizontal"
-                            android:src="@drawable/avyukta"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:text="Dialer India"
-                            android:focusable="true"
-                            android:textColor="@color/txt_dark"
-                            android:textSize="30sp" />
-                        <EditText
-                            android:id="@+id/Email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginEnd="30dp"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginTop="10dp"
-                            android:backgroundTint="#90fafafa"
-                            android:drawablePadding="25dp"
-                            android:drawableStart="@drawable/ic_email_sv"
-                            android:focusableInTouchMode="true"
-                            android:fontFamily="sans-serif-condensed"
-                            android:gravity="left"
-                            android:hint="Email Address"
-                            android:inputType="textEmailAddress"
-                            android:paddingBottom="15dp"
-                            android:paddingEnd="24dip"
-                            android:paddingStart="34dip"
-                            android:paddingTop="15dp"
-                            android:textColor="@color/txt_dark"
-                            android:textColorHint="@color/txt"
-                            android:textSize="20sp" />
+                    <EditText
+                        android:id="@+id/Password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#90fafafa"
+                        android:drawablePadding="30dp"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingBottom="15dp"
+                        android:paddingEnd="24dip"
+                        android:paddingStart="34dip"
+                        android:paddingTop="15dp"
+                        android:textColor="@color/txt_dark"
+                        android:textColorHint="@color/txt"
+                        android:textSize="20sp" />
 
 
-                        <EditText
-                            android:id="@+id/Password"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginEnd="30dp"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginTop="10dp"
-                            android:backgroundTint="#90fafafa"
-                            android:drawablePadding="30dp"
-                            android:drawableStart="@drawable/ic_password"
-                            android:focusableInTouchMode="true"
-                            android:fontFamily="sans-serif-condensed"
-                            android:gravity="left"
-                            android:hint="Password"
-                            android:inputType="textPassword"
-                            android:paddingBottom="15dp"
-                            android:paddingEnd="24dip"
-                            android:paddingStart="34dip"
-                            android:paddingTop="15dp"
-                            android:textColor="@color/txt_dark"
-                            android:textColorHint="@color/txt"
-                            android:textSize="20sp" />
+                    <!--<Button-->
+                    <!--android:id="@+id/Login"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginBottom="25dip"-->
+                    <!--android:layout_marginTop="40dip"-->
+                    <!--android:background="@drawable/box_blue"-->
+                    <!--android:paddingBottom="5dip"-->
+                    <!--android:paddingEnd="30dip"-->
+                    <!--android:paddingStart="30dip"-->
+                    <!--android:paddingTop="5dip"-->
+                    <!--android:text="Login"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/txt_dark"-->
+                    <!--android:textSize="19sp" />-->
+
+                    <Button
+                        android:layout_marginBottom="25dip"
+                        android:layout_marginTop="40dip"
+                        android:transitionName="@string/app_name"
+                        android:id="@+id/Button_Login"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:elevation="118dip"
+                        android:layout_height="wrap_content"
+                        android:text="Login"
+                        android:textAllCaps="false"
+                        android:drawablePadding="11dip"
+                        android:paddingRight="80dip"
+                        android:paddingLeft="80dip"
+                        android:textColor="@color/white"
+                        style="@style/AppTheme.RoundedCornerMaterialButton"/>
 
 
-                        <Button
-                            android:id="@+id/Login"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="25dip"
-                            android:layout_marginTop="40dip"
-                            android:background="@drawable/box_blue"
-                            android:paddingBottom="5dip"
-                            android:paddingEnd="30dip"
-                            android:paddingStart="30dip"
-                            android:paddingTop="5dip"
-                            android:text="SignUp"
-                            android:textAllCaps="false"
-                            android:textColor="@color/txt_dark"
-                            android:textSize="19sp" />
+                </LinearLayout>
 
+            </ScrollView>
 
-                    </LinearLayout>
-
-                </ScrollView>
-
-
-            </RelativeLayout>
 
         </RelativeLayout>
+
     </FrameLayout>
 </LinearLayout>
 </android.support.constraint.ConstraintLayout>

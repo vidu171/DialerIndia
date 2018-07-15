@@ -4,12 +4,11 @@
     package="com.dialerindia.vidu.dialerindia">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-    <!--<uses-permission android:name="android.permission.RECORD_AUDIO" />-->
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application
@@ -19,15 +18,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.LoginActivity"
+            android:noHistory="true"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.MainActivity"></activity>
         <activity android:name=".Activities.AddLeadsActivity" android:noHistory="true"  android:windowSoftInputMode="stateHidden|adjustResize"/>
-        <activity android:name=".Activities.LoginActivity" android:noHistory="true" android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity android:name=".Activities.MyLeadsActivity"/>
         <activity android:name=".Activities.Dispositions"/>
         <activity android:name=".Activities.ScheduledLeadsActivity"/>

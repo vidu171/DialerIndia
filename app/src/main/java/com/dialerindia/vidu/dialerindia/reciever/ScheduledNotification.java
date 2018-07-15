@@ -33,7 +33,7 @@ public class ScheduledNotification extends BroadcastReceiver{
             PrefsHelper.writePrefInt(context, constants.PREF_SCHEDULED_NOTIFICATION_ID, notification_id);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, context.getString(R.string.channel_ID))
-                    .setSmallIcon(R.drawable.ic_call_white)
+                    .setSmallIcon(R.drawable.ic_call)
                     .setContentTitle("Reminder Call: "+lead.Name)
                     .setContentText("Tap to continue")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)

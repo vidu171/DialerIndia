@@ -1,9 +1,11 @@
 package com.dialerindia.vidu.dialerindia.DAO;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.dialerindia.vidu.dialerindia.Constants.Constants;
+import com.dialerindia.vidu.dialerindia.helper.PrefsHelper;
 import com.google.common.util.concurrent.SettableFuture;
 
 import org.json.JSONObject;
@@ -20,7 +22,7 @@ public class LoginDAO {
     private static LoginDAO instance;
     public long val = 0;
     private LoginDAO() {
-        URL = constants.BASE_URL_LOGIN+constants.URL_SUFFIX_LOGIN;
+        URL = constants.BASE_URL +constants.URL_SUFFIX_LOGIN;
     }
 
     public static LoginDAO getInstance() {
@@ -31,7 +33,7 @@ public class LoginDAO {
     }
 
 
-    public static Future<Boolean> tryLogin(final String user, final String password) {
+    public Future<Boolean> tryLogin(final String user, final String password, final Context context) {
         URL+="&VD_login="+user+"&VD_pass="+password;
         final SettableFuture<Boolean> LoginFuture = SettableFuture.create();
         AsyncTask.execute(new Runnable() {
@@ -49,15 +51,44 @@ public class LoginDAO {
                             .validateTLSCertificates(false)
                             .followRedirects(false)
                             .execute();
-                    String temp1 = new JSONObject(response.body()).getString("temp1");
-                    Log.w("Login DAO", temp1);
+
+                    Log.w("Login Dao", response.body());
+
+                    if(response.body().contains("Invalide user id")){
+                        LoginFuture.set(false);
+                    }
+                    else {
+                        JSONObject user = new JSONObject(response.body());
+                        String name = user.getString("full_name");
+                        String user_name = user.getString("user");
+                        String user_group = user.getString("user_group");
+                        String scheduled_callbacks = user.getString("scheduled_callbacks");
+                        String user_id = user.getString("user_id");
+                        String pass = user.getString("pass");
+                        String user_level = user.getString("user_level");
+                        String user_email = user.getString("email");
+                        PrefsHelper.writePrefString(context, constants.PREF_USE_FULL_NAME, name);
+                        PrefsHelper.writePrefString(context, constants.PREF_USER_GROUP, user_group);
+                        PrefsHelper.writePrefString(context, constants.PREF_USER_NAME, user_name);
+                        PrefsHelper.writePrefString(context, constants.PREF_USER_SCHEDULED_CALLBACKS, scheduled_callbacks);
+                        PrefsHelper.writePrefString(context, constants.PREF_USER_ID, user_id);
+                        PrefsHelper.writePrefString(context, constants.PREF_USER_PASS, pass);
+                        PrefsHelper.writePrefString(context, constants.PREF_USER_LEVEL, user_level);
+                        PrefsHelper.writePrefString(context, constants.PREF_USER_EMAIL, user_email);
+                        LoginFuture.set(true);
+                    }
+
+
+//                    String temp1 = new JSONObject(response.body()).getString("temp1");
+//                    Log.w("Login DAO", response.body());
                 }
                 catch (Exception e){
                     e.printStackTrace();
+                    LoginFuture.set(false);
                 }
             }
         });
-        return null;
+        return LoginFuture;
     }
 
 }
